@@ -111,8 +111,6 @@ do{h=0;
 i=0;j=1;salida=0;temp=0;
     do{
         if(strcmp(Pisos[i],Pisos[j])>0){
-            //permute(&Pisos[i],&Pisos[j]);
-
             strcpy(pibote,Pisos[i]);
             strcpy(Pisos[i],Pisos[j]);
             strcpy(Pisos[j],pibote);
@@ -143,12 +141,9 @@ do{h=0;
 i=0;j=1;salida=0;temp=0;
     do{
         if(strcmp(habitacion[i],habitacion[j])>0){
-            //permute(&Pisos[i],&Pisos[j]);
-
             strcpy(pibote,habitacion[i]);
             strcpy(habitacion[i],habitacion[j]);
             strcpy(habitacion[j],pibote);
-
             temp=i;j++;h++;
         }else if(strcmp(habitacion[i],habitacion[j])<0){
         i=j;j++;temp=i;
@@ -211,19 +206,7 @@ for (i=0;i<cant_res;i++){
 	result[res[i].piso][res[i].hab].contador++;
 	result[res[i].piso][res[i].hab].inqui+=res[i].cantidad;
 	result[res[i].piso][res[i].hab].costo=	result[res[i].piso][res[i].hab].contador*Precio[res[i].hab];
-}//printf("sumas");
-//for (i=1;i<13;i++){
-//	for (j=1;j<6;j++){
-//		if (result[i][j].inqui!=0)
-//		printf("\n***\ncantidad total en el piso %s, habitacion %s : %d - costo : //%d",pisos[i-1],habitacion[j-1],result[i][j].inqui,result[i][j].costo);
-//		}/
-//	}
-//	printf("\n***\n");
-///mayor_piso(result);
-///mayor_hab(result);
-///mayor_piso_hab(result);
-///mayor_piso_inqui(result);
-///mayor_hab_inqui(result);
+}
 }
 void mayor_hab_inqui(struct cuentas result[13][6]){
 	int i,j;
@@ -245,7 +228,6 @@ void mayor_hab_inqui(struct cuentas result[13][6]){
 			{
 			P_temp = j;
 			}
-		//printf("\n***Hab: %d - inqui: %d - pibote: %d ***",j,sum_p_inq[j],sum_p_inq[P_temp]);
 		}
 	char habitacion[5][12];
 	lee_hab(habitacion);
@@ -267,7 +249,6 @@ void mayor_piso_inqui(struct cuentas result[13][6]){
 		{
 		sum_p_inq[j]+=result[j][i].inqui;
 		}
-		//printf("\n***piso: %d - Hab: %d - contador: %d - pibote: %d ***",j,i,result[j][i].contador,result[P_temp][H_temp].contador);
 		if (sum_p_inq[j]>=sum_p_inq[P_temp])
 			{
 			P_temp = j;
@@ -298,7 +279,6 @@ void mayor_piso_hab(struct cuentas result[13][6]){
 		for (i=1;i<6;i++)
 		{
 		sum_precio[j][i]+=result[j][i].contador*Precio[i];
-		//printf("\n***piso: %d - Hab: %d - contador: %d - pibote: %d ***",j,i,result[j][i].contador,result[P_temp][H_temp].contador);
 		if (result[j][i].contador>=result[P_temp][H_temp].contador)
 			{
 			P_temp = j; H_temp = i;
@@ -375,13 +355,10 @@ FILE*test_r;struct reserva reserva[cant_res];
 			test_r=fopen("Reservas.data","rb");
 			fread(reserva,sizeof(struct reserva),cant_res,test_r);
 			fclose(test_r);
-//		printf("N :\tPiso\t\tHabitacion\tCantidad\n");
 	char habitacion[5][12];
 	lee_hab(habitacion);
 	char pisos[12][12];
 	lee_pisos(pisos);
-/*for (int i=0;i<cant_res;i++)
-    printf("\n%d :\t%-15s %-10s\t %d \n", i+1, pisos[reserva[i].piso-1], habitacion[reserva[i].hab-1],reserva[i].cantidad);
 */return cant_res;
 }
 void craft_res(){
@@ -482,23 +459,22 @@ void reset_hab(){
 	printf("\nCreado Habitacion");
 }
 void reset_piso(){
-	char Pisos[12][12]; /// declaro vector [12] posiciones [12] caracteres
+	char Pisos[12][12]; 
 	for (int i=0;i<12;i++)
 		strcpy(Pisos[i],"           ");
-	strcpy(Pisos[0],"Zeus");/// vector 1
-	strcpy(Pisos[1],"Hera");///vector 2
-	strcpy(Pisos[2],"Hefesto");/// vector3
+	strcpy(Pisos[0],"Zeus");
+	strcpy(Pisos[1],"Hera");
+	strcpy(Pisos[2],"Hefesto");
 	strcpy(Pisos[3],"Atenea");
 	strcpy(Pisos[4],"Apolo");
 	strcpy(Pisos[5],"Artemisa");
 	strcpy(Pisos[6],"Ares");
 	strcpy(Pisos[7],"Afrodita");
-	strcpy(Pisos[8],"Hestia");///8...
-	strcpy(Pisos[9],"Hermes");///9...
+	strcpy(Pisos[8],"Hestia");
+	strcpy(Pisos[9],"Hermes");
 	strcpy(Pisos[10],"Demeter");
 	strcpy(Pisos[11],"Poseidon");
 	FILE* tercero;
-	//remove("Pisos.data");
 	tercero=fopen("Pisos.data","wb");
 	fwrite(Pisos,sizeof(Pisos),1,tercero);
 	fclose(tercero);
@@ -521,7 +497,6 @@ void reset_precio(){
 void reset_res(){
 	remove("reservas.data");
 	FILE * quinto;
-	//if(quinto=fopen("Reservas.data","rb")==NULL){
         fclose(quinto);
         quinto=fopen("Reservas.data","wb");
     fclose(quinto);
