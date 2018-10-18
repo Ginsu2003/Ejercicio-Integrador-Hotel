@@ -184,14 +184,14 @@ void lee_res(int cant_res,struct reserva res[]){
 	fread(res,sizeof(struct reserva),cant_res,reservas);
 	fclose(reservas);
 }
-void resultados(int cant_res,struct reserva res[],struct cuentas result[13][6]){//printf("ingres");
+void resultados(int cant_res,struct reserva res[],struct cuentas result[13][6]){
 
 	char habitacion[5][12];
-	lee_hab(habitacion);//printf("hab");
+	lee_hab(habitacion);
 	char pisos[12][12];
-	lee_pisos(pisos);//printf("piso");
+	lee_pisos(pisos);
 	int Precio[6];
-	lee_precio(Precio);//printf("precio");
+	lee_precio(Precio);
 int i,j;
 for (i=1;i<13;i++){
 	for (j=1;j<6;j++){
@@ -200,8 +200,7 @@ for (i=1;i<13;i++){
 		result[i][j].costo=0;
 	}
 }
-//printf("contadores");
-lee_res(cant_res,res);//printf("reserv");
+lee_res(cant_res,res);
 for (i=0;i<cant_res;i++){
 	result[res[i].piso][res[i].hab].contador++;
 	result[res[i].piso][res[i].hab].inqui+=res[i].cantidad;
