@@ -16,31 +16,31 @@ struct cuentas{
 	int costo;
 	int inqui;
 };
-int menu();
-void ord_piso();
-void mayor_piso_inqui(struct cuentas result[13][6]);
-void mayor_hab_inqui(struct cuentas result[13][6]);
-void reset_cant();
-void reset_hab();
-void reset_piso();
-void reset_precio();
-void reset_res();
-void ord_hab();
-void mayor_piso_hab(struct cuentas result[13][6]);
-void lee_res(int cant_res,struct reserva res[]);
-void lee_precio(int Precio[6]);
-void lee_pisos(char pisos[12][12]);
-void mayor_hab(struct cuentas result[13][6]);
-void mayor_piso(struct cuentas result[13][6]);
-void resultados(int cant_res,struct reserva res[],struct cuentas result[13][6]);
-void reset_arch();
-void lee_hab(char habitacion [5][12]);
-int select_hab();
-int select_piso();
-void craft_res();
-int testeo();
-int n_res();
-void inicio();
+int menu(); /// menu de seleccion de opciones
+void ord_piso();  /// devuelve la lista ordenada en pantalla
+void mayor_piso_inqui(struct cuentas result[13][6]); /// devuelve el piso con mayor cantidad de inquilinos alojados
+void mayor_hab_inqui(struct cuentas result[13][6]); /// devuelve el tipo de habitacion con mayor cantidad de inquilinos alojados
+void reset_cant(); /// reinicio del archivo de cantidades de reservas
+void reset_hab(); /// reinicio del archivo delistado de tipos de habitaciones
+void reset_piso(); /// reinicio del archivo de listado de los pisos
+void reset_precio(); /// reinicio del archivo de precios por tipo de habitacion
+void reset_res(); /// reinicio del registro de reservas
+void ord_hab(); /// devuelve el listado de tipos de habitacion ordenado
+void mayor_piso_hab(struct cuentas result[13][6]); /// devuelve el piso y habitacion mas solicitado
+void lee_res(int cant_res,struct reserva res[]); /// lee el archivo de reservas 
+void lee_precio(int Precio[6]); /// lee el archivo de precios
+void lee_pisos(char pisos[12][12]); /// lee el archivo de pisos
+void mayor_hab(struct cuentas result[13][6]); /// devuelve la habitacion con mayor reservas y su recaudacion
+void mayor_piso(struct cuentas result[13][6]); /// devuelve el piso con mayor reservas y su recaudacion
+void resultados(int cant_res,struct reserva res[],struct cuentas result[13][6]); /// se encarga de calcular el total de inquilinos y reservas en cada tipo de habitacion por piso
+void reset_arch(); /// reinicia todos los archivos
+void lee_hab(char habitacion [5][12]); /// lee archivo de habitaciones
+int select_hab(); /// menu de seleccion de habitacion
+int select_piso(); /// menu de seleccion de piso
+void craft_res(); /// generacion de reerva
+int testeo(); /// lee el archivo de cantidad de reservas
+int n_res(); /// finalizacion de reserva
+void inicio(); /// inicializa los archivos
 int main(){
     int opcion,cant_res=0,salir=0;
     struct reserva res[1];
@@ -358,7 +358,7 @@ FILE*test_r;struct reserva reserva[cant_res];
 	lee_hab(habitacion);
 	char pisos[12][12];
 	lee_pisos(pisos);
-*/return cant_res;
+return cant_res;
 }
 void craft_res(){
 	struct reserva res;
